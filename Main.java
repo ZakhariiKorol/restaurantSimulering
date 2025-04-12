@@ -30,7 +30,6 @@ public class Main extends Application {
         statusBar.setStyle("-fx-background-color: #90EE90;");
 
         // Section titles
-        // Symbols are made by AI
         customerBox.getChildren().add(new Label("👤 Customers"));
         orderQueueBox.getChildren().add(new Label("📦 Order Queue"));
         cookBox.getChildren().add(new Label("👨‍🍳 Chefs"));
