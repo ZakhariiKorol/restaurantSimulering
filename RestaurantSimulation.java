@@ -2,6 +2,8 @@ package restaurantsimulering;
 
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class RestaurantSimulation implements Runnable {
 
@@ -9,6 +11,12 @@ public class RestaurantSimulation implements Runnable {
     private final VBox orderQueueBox;
     private final VBox chefBox;
     private final HBox statusBar;
+    
+    // Happy/Angry counter
+    AtomicInteger happyCount = new AtomicInteger(0);
+    AtomicInteger angryCount = new AtomicInteger(0);
+    
+    Random random = new Random();
 
     public RestaurantSimulation(VBox customerBox, VBox orderQueueBox, VBox chefBox, HBox statusBar) {
         this.customerBox = customerBox;
@@ -30,7 +38,7 @@ public class RestaurantSimulation implements Runnable {
             String meal = (i % 2 == 0) ? "Pizza" : "Burger";
             new Thread(new Customer("Customer " + i, meal, orderQueue, customerBox, orderQueueBox)).start();
             try {
-                Thread.sleep(500); // staggered arrival
+                Thread.sleep(500 + random.nextInt(1500)); // Random delay
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
