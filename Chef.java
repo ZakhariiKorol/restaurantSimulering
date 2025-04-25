@@ -37,7 +37,7 @@ public class Chef implements Runnable {
                 // Simulate cooking time
                 Thread.sleep(order.getPrepTime());
 
-                // Remove order from order queue UI
+                // Remove order from order queue 
                 Platform.runLater(() -> {
                     if (order.getVisual() != null) {
                         orderQueueBox.getChildren().remove(order.getVisual());
@@ -50,6 +50,9 @@ public class Chef implements Runnable {
                 // Add to served area
                 Label served = new Label("✅ " + order.getMealType() + " ready!");
                 Platform.runLater(() -> statusBar.getChildren().add(served));
+                
+                
+                Thread.sleep(1000); // 1 second break before taking order
 
             } catch (InterruptedException e) {
                 e.printStackTrace();
