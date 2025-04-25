@@ -22,7 +22,7 @@ public class Customer implements Runnable {
     @Override
     public void run() {
         // Create a label to represent this customer
-        Label customerLabel = new Label("👤 " + name + " wants " + mealType);
+        Label customerLabel = new Label(name + " wants " + mealType);
         Platform.runLater(() -> customerBox.getChildren().add(customerLabel));
 
         try {
